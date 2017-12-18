@@ -1,0 +1,117 @@
+<script>
+function vdiSystemLogListController($scope, $rootElement, $element){
+	var data = JSON.stringify({
+	});
+
+	$scope.rows = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0].map(function(d, i){
+		d = JSON.parse(data);
+		d.id = "$$_" + Math.random().toString(36).substr(2);
+		d.user = ["admin", "master", "stuff"][Math.floor(Math.random() * 3)];
+		d.datetime = new Date();
+		d.content = ["增加记录", "修改记录", "删除记录", "登录", "登出"][Math.floor(Math.random() * 5)];
+		return d;
+	});
+	var _checkAll = $element.find("input[data-ng-model='rowCheckAll']")[0];
+	var _cmdBtns = $element.find(".dt-toolbar .btn").addClass("disabled");
+	var _cmdBatchBtns = _cmdBtns.filter(".isBatch");
+	var _cmdSingleBtns = _cmdBtns.filter(".isSingle");
+	var fn_some_check = function(_r){ return _r.checked; };
+	var fn_change_buttons_state = function(){
+		var _eles = $element.find("input[data-ng-model='row']");
+		var _checkedLength = _eles.filter(":checked").length;
+		if(_checkedLength){
+			_cmdBtns.removeClass("disabled");
+			if(_checkedLength > 1){
+				_cmdSingleBtns.addClass("disabled");
+			}
+		}
+		else{
+			_cmdBtns.addClass("disabled");
+		}
+	};
+	$scope.evCheckAll = function(checkAll){
+		var _eles = $element.find("input[data-ng-model='row']");
+		_eles.each(function(){
+			this.checked = checkAll;
+		});
+		fn_change_buttons_state();
+	};
+	$scope.evCheck = function(check, id){
+		_checkAll.checked = [].every.call($element.find("input[data-ng-model='row']"), function(_r){
+			return _r.checked;
+		});
+		fn_change_buttons_state();
+	};
+}
+</script>
+<section id="widget-grid">
+	<div class="row">
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div
+				class="jarviswidget"
+				id="wid-desktop-teach"
+				data-ng-controller="vdiSystemLogListController"
+				data-widget-editbutton="true"
+				data-widget-colorbutton="true"
+				data-widget-editbutton="true"
+				data-widget-togglebutton="true"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="true"
+				data-widget-custombutton="true"
+				data-widget-collapsed="false"
+				data-widget-sortable="true">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>系统ISO</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					<div class="jarviswidget-editbox"></div>
+					<div class="widget-body no-padding">
+						<div class="alert alert-info no-margin">
+							<ul>
+								<li>FTP地址：ftp://192.168.69.10/iso/ 用户：isouser 密码：isouser。</li>
+								<li>系统会自动扫描FTP目录下的ISO文件。</li>
+								<li>超过2GB的ISO文件，需要通过FTP工具上传。</li>
+							</ul>
+						</div>
+						<div class="dataTables_wrapper form-inline no-footer">
+							<!--div class="dt-toolbar">
+								<div class="col-xs-12 col-sm-3"></div>
+								<div class="col-sm-9 col-xs-10 hidden-xs">
+									<a class="btn btn-info isBatch" href="javascript:">网络配置</a>
+									<a class="btn btn-info isBatch" href="javascript:">重启主机</a>
+									<a class="btn btn-info isBatch" href="javascript:">关闭主机</a>
+									<a class="btn btn-info isBatch" href="javascript:">重启虚拟化服务</a>
+								</div>
+							</div-->
+						</div>
+						<div class="table-responsive">
+							<table
+								class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox"
+								width="100%">
+								<thead class="vdi_header">
+									<tr>
+										<th><label class="checkbox"><input type="checkbox" data-ng-model="rowCheckAll" data-ng-change="evCheckAll(rowCheckAll)" name="checkbox-inline"><i></i></label></th>
+										<th>操作者</th>
+										<th>操作内容</th>
+										<th>操作时间</th>
+									</tr>
+								</thead>
+								<tbody class="vdi_body">
+									<tr data-ng-repeat="item in rows">
+										<td><label class="checkbox"><input data-ng-model="row" data-ng-change="evCheck(row, item.id)" type="checkbox" value="{{item.id}}" name="checkbox-inline"><i></i></label></td>
+										<td>{{ item.user }}</td>
+										<td>{{ item.content }}</td>
+										<td>{{ item.datetime }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+<script>pageSetUp();</script>

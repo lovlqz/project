@@ -1,0 +1,20 @@
+<script>
+function vdiProgressController($scope){
+	$scope.recs = new Array(100).join(",").split(",").map(function(){
+		return {
+			content : "操作记录" + Math.random().toString(36),
+			datetime : new Date()
+		};
+	});
+}
+</script>
+<div class="progress_resize_handler"></div>
+<div class="row no-margin no-padding" style="height:100%;overflow:auto;">
+	<article data-ng-controller="vdiProgressController"
+		style="background:#fff;"
+		>
+		<ul data-ng-repeat="item in recs">
+			<li>[{{ item.datetime.toString() }}]: {{ item.content }}</li>
+		</ul>
+	</article>
+</div>

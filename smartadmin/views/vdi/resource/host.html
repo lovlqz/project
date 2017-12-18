@@ -1,0 +1,142 @@
+<script>
+function vdiResourceHostListController($scope, $rootElement, $element){
+	var data = JSON.stringify({
+		"name" : "",
+		"alias" : "",
+		"usb" : false,
+		"status" : "",
+		"jieru" : "终端",
+		"ip_mac" : "12:03:FE:3B:75:34",
+		"template" : "Windows7-32",
+		"hardware" : { cpu : "2", mem : "2 GB", disk : "10 GB" },
+		"host" : "..."
+	});
+
+	$scope.rows = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0].map(function(d, i){
+		d = JSON.parse(data);
+		d.id = "$$_" + Math.random().toString(36).substr(2);
+		d.name = "个人桌面-" + String.fromCharCode(20000 + Math.floor(Math.random() * 200));
+		d.alias = ["张三", "李四", "王五", "Andy", "Jacky"][Math.floor((Math.random() * 5))] + "的桌面";
+		d.status = "已运行 " + Math.ceil(Math.random() * 10) + "小时" + (Math.floor(Math.random() * 60)) + "分";
+		d.host = "主机-" + String.fromCharCode(20000 + Math.floor(Math.random() * 200));
+		d.template = ["WinXP", "Win7", "Win8", "OSX", "Linux32"][Math.floor((Math.random() * 5))];
+		return d;
+	});
+	var _checkAll = $element.find("input[data-ng-model='rowCheckAll']")[0];
+	var _cmdBtns = $element.find(".dt-toolbar .btn").addClass("disabled");
+	var _cmdBatchBtns = _cmdBtns.filter(".isBatch");
+	var _cmdSingleBtns = _cmdBtns.filter(".isSingle");
+	var fn_some_check = function(_r){ return _r.checked; };
+	var fn_change_buttons_state = function(){
+		var _eles = $element.find("input[data-ng-model='row']");
+		var _checkedLength = _eles.filter(":checked").length;
+		if(_checkedLength){
+			_cmdBtns.removeClass("disabled");
+			if(_checkedLength > 1){
+				_cmdSingleBtns.addClass("disabled");
+			}
+		}
+		else{
+			_cmdBtns.addClass("disabled");
+		}
+	};
+	$scope.evCheckAll = function(checkAll){
+		var _eles = $element.find("input[data-ng-model='row']");
+		_eles.each(function(){
+			this.checked = checkAll;
+		});
+		fn_change_buttons_state();
+	};
+	$scope.evCheck = function(check, id){
+		_checkAll.checked = [].every.call($element.find("input[data-ng-model='row']"), function(_r){
+			return _r.checked;
+		});
+		fn_change_buttons_state();
+	};
+}
+</script>
+<section id="widget-grid">
+	<div class="row">
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div
+				class="jarviswidget"
+				id="wid-desktop-teach"
+				data-ng-controller="vdiResourceHostListController"
+				data-widget-editbutton="true"
+				data-widget-colorbutton="true"
+				data-widget-editbutton="true"
+				data-widget-togglebutton="true"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="true"
+				data-widget-custombutton="true"
+				data-widget-collapsed="false"
+				data-widget-sortable="true">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>主机管理</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					<div class="jarviswidget-editbox"></div>
+					<div class="widget-body no-padding">
+						<div class="alert alert-info no-margin">
+							<ul>
+								<li>配置好的主机在启动时会自动向管理台登记。</li>
+								<li>可以删除已注册的主机，如需要恢复则需要重启该主机自动登记。</li>
+								<li>虚拟化服务状态包含：正常、挂起。</li>
+								<li>重启非主控节点的虚拟化服务可使其时钟保持和主控节点一致。</li>
+							</ul>
+						</div>
+						<div class="dataTables_wrapper form-inline no-footer">
+							<div class="dt-toolbar">
+								<div class="col-xs-12 col-sm-3"></div>
+								<div class="col-sm-9 col-xs-10 hidden-xs">
+									<a class="btn btn-info isBatch" href="javascript:">网络配置</a>
+									<a class="btn btn-info isBatch" href="javascript:">重启主机</a>
+									<a class="btn btn-info isBatch" href="javascript:">关闭主机</a>
+									<a class="btn btn-info isBatch" href="javascript:">重启虚拟化服务</a>
+								</div>
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table
+								class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox"
+								width="100%">
+								<thead class="vdi_header">
+									<tr>
+										<th><label class="checkbox"><input type="checkbox" data-ng-model="rowCheckAll" data-ng-change="evCheckAll(rowCheckAll)" name="checkbox-inline"><i></i></label></th>
+										<th>主机</th>
+										<th>虚拟化服务状态</th>
+										<th>当前桌面数</th>
+										<th>CPU</th>
+										<th>内存</th>
+										<th>存储</th>
+										<th>是否主控</th>
+									</tr>
+								</thead>
+								<tbody class="vdi_body">
+									<tr data-ng-repeat="item in rows">
+										<td><label class="checkbox"><input data-ng-model="row" data-ng-change="evCheck(row, item.id)" type="checkbox" value="{{item.id}}" name="checkbox-inline"><i></i></label></td>
+										<td>{{ item.name }}</td>
+										<td>{{ item.status }}</td>
+										<td>{{ item.desktopCount }}</td>
+										<td>{{ item.hardware.cpu }}</td>
+										<td>{{ item.hardware.mem }}</td>
+										<td>{{ item.hardware.disk }}</td>
+										<td>{{ item.isMaster }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- end widget content -->
+				</div>
+				<!-- end widget div -->
+			</div>
+			<!-- end widget -->
+		</article>
+		<!-- WIDGET END -->
+	</div>
+	<!-- end row -->
+</section>
+<script>pageSetUp();</script>

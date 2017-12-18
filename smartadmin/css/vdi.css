@@ -1,0 +1,60 @@
+table thead.vdi_header tr th{
+	white-space:nowrap;
+}
+.progress_resize_handler{
+	background:red;
+	height:8px;
+	cursor:row-resize;
+}
+#PageMasker{
+	position:fixed;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	background:transparent;
+	z-index:999999;
+	display:none;
+}
+#PageMasker.show{
+	display:block;
+}
+form.skin_change{
+	width:48px;
+	height:48px;
+	padding:6px;
+}
+form.skin_change label{
+	position:relative;
+	width:16px;
+	height:16px;
+	border:1px solid #999;
+	display:inline-block;
+	background:#666;
+}
+form.skin_change label input[type="radio"]{
+	visibility:hidden;
+}
+#PageBottomBar{
+	position:fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:888888;
+	height:8px;
+}
+.progress_wrapper{
+	background:#679;
+	height:308px;
+	transform:translate(0,-300px);
+	-webkit-transform:translate3d(0,-300px,0);
+	-webkit-transform:translate(0,-300px);
+	-o-transform:translate(0,-300px);
+	-ms-transform:translate(0,-300px);
+	-moz-transform:translate(0,-300px);
+}
+
+
+
+
+
