@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="css/list.css" />
+<header>
+	<a href="javascript:;" class="iconfont" ng-click="goHome()">&#xe606;</a>
+	<div>
+		<em ng-click="search(searchFlower)"></em>
+		<input type="text" placeholder="请输入关键字..." ng-model="searchFlower"/>
+	</div>
+	<span class="iconfont">&#xe61e;</span>
+</header>
+<div class="check">
+		<ul>
+			<li class="iconfont left" ng-click="changeCss()" ng-bind-html="icon"></li>
+			<li ng-click="changeActive('goodsPrice')">
+				<span class="sale">
+					<b ng-class="activeFlag==1?'active':''">价格</b>
+					<div>
+						<i class="iconfont bo" ng-class="priceFlag?'active':''">&#xe7d9;</i>
+						<i class="iconfont" ng-class="priceFlag1?'active':''">&#xe645;</i>
+					</div>
+				</span>			
+			</li>
+			<li ng-class="activeFlag==2?'active':''" ng-click="changeActive('saleCount')">
+				<span>销量<em class="iconfont">&#xe64c;</em></span>
+				
+			</li>
+			<li class="nob" ng-class="activeFlag==3?'active':''" ng-click="changeActive('commentCount')">
+				<span>评价<em class="iconfont">&#xe64c;</em></span>				
+			</li>
+		</ul>
+</div>
+<div ng-class="animate?'ani':'ani2'">
+<section ng-if="mai">
+	<div ng-class="list" id="div">
+		<dl ng-repeat="goods in dataList | orderBy:selectColumn:reverseFlag" ng-click="goDetail(goods.goodsId)">
+			<dt><img ng-src="{{imgUrl+goods.goodsLogo}}"/></dt>
+			<dd>
+				<p ng-bind="goods.goodsName"></p>
+				<div>
+					<span ng-bind="'¥ '+goods.goodsPrice"></span>
+					<em ng-bind="goods.marketPrice"></em>
+				</div>
+				<em ng-bind="'已售'+goods.saleCount+'件'"></em>
+			</dd>
+		</dl>
+  	 </div>
+</section>
+<p ng-if="!mai" class="p">没有找到你要的花朵哦~!</p>	
+</div>
+<div class='foot'></div>
+<div class="iconfont" id="icont" ng-click="toTop()">&#xe683;</div>

@@ -1,0 +1,17 @@
+<div class="l_emptypl" ng-if="l_showemptypl">
+	<p>还没有用户来评论哟~~~</p>
+	<div class="l_plBtn" ng-click="l_getPl()">点击评论</div>
+</div>
+<div class="l_fullpl" ng-if="l_showfullpl" ng-model="l_pl">
+	
+	<div class="l_plList">
+		<textarea class="l_p" ng-model="mes" ng.keyup="keyup($event)"></textarea>
+		<input type="button" value="确定" id="sub" ng-click="add()">
+	</div>
+	<h2>{{l_pl}}</h2>
+</div>
+
+
+
+
+

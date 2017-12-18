@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="css/login.css"/>
+<body>
+	<header>
+		<em class="iconfont" ui-sref="footer.home.article1">&#xe601;</em>
+		<h1>登录</h1>
+		<span ng-click="toRegist()">注册</span>
+	</header>
+	<section>
+		<div class="div1"><img src="img/g-ding.png"/></div>
+		<div class="d2">
+			<label for="input1" class="label1"><input type="text" name="input1" id="" placeholder="用户名/手机/邮箱" ng-model="user"/></label>
+			<label for="input2"><input type="password" name="input2" id="" placeholder="密码" ng-model="psw"/></label>
+		</div>
+		<div class="div3" ng-click="login()">登录</div> 
+		<div class="div4">
+			<a href="">忘记密码</a>
+			<span>其他账号登录</span>
+		</div>
+		<div class="d4"><div class="div4" ng-show="showFlag" ng-bind="txt"></div></div>
+		<div class="div5"><img src="img/g-wx.png"/></div>
+	</section>
+</body>

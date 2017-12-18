@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="css/regist.css" />
+<body>
+	<header>
+		<em class="iconfont" ng-click="toLogin()">&#xe606;</em>
+		<h1>注册</h1>
+		<span></span>
+	</header>
+	<section>
+		<div class="div1"><img src="img/g-ding.png"/></div>
+		<div class="div2">
+			<label for="input1" class="label1"><input type="text" name="input1" id="" placeholder="手机号码" ng-model="username"/></label>
+			<label for="input2" class="label2"><input type="text" name="input2" id="" placeholder="验证码" class="inp2" ng-model="code"/><span ng-click="getCode()">获取验证码</span></label>
+			<label for="input3"><input type="password" name="input3" id="" placeholder="密码" ng-model="psw"/></label>
+		</div>
+		
+		<div class="div3" ng-click="login()">注册</div>
+		<div class="d4"><div class="div4" ng-show="showFlag" ng-bind="txt"></div></div>
+	</section>
+	
+		
+	
+</body>

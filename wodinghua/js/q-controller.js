@@ -1,0 +1,122 @@
+app.controller("listController",function($rootScope,$scope,$http,$sce,$timeout,$state,$stateParams){
+	$rootScope.$on("$viewContentLoaded",function(){
+		$scope.animate=true
+	})
+	$scope.list="list1";
+	$scope.flag=true;
+	$scope.icon="&#xe612;";
+	$scope.searchFlower=''
+	$scope.icon=$sce.trustAsHtml($scope.icon);
+	$scope.mai=true;
+	$scope.imgUrl="http://app.wodinghua.com"
+	$scope.fla=false
+if($stateParams.name){
+		$scope.searchFlower=$stateParams.name
+		$http({
+			url:"json/q-search.json",
+			methed:"get",
+			params:{
+				keyword:$stateParams.name
+			}
+		}).success(function(res){
+			for(var key in res){
+				if(res[key].keyword==$stateParams.name){
+					$scope.dataList=res[key].dataList
+					$scope.mai=true
+					return false
+				}else{
+					$scope.mai=!1;
+				}
+			}
+		})
+	}else{
+		$http.get("http://wdinghua.applinzi.com/json/q-list.json").then(function(res){
+		$scope.dataList=res.data.dataList;
+		angular.forEach($scope.dataList,function(value){
+			value.saleCount=value.saleCount*1;
+			value.goodsPrice=value.goodsPrice*1;
+			value.commentCount=value.commentCount*1;
+			})
+//			console.log($scope.dataList)
+		})
+	}	
+	$scope.changeCss=function(){
+		if($scope.flag){
+			$scope.list="list2"	
+			$scope.icon=$sce.trustAsHtml("&#xe6ae;")
+			$scope.animate=false;
+		}else{
+			$scope.list="list1"	
+			$scope.icon=$sce.trustAsHtml("&#xe612;")
+			$scope.animate=true;
+		}
+		$scope.flag=!$scope.flag
+	}
+	$scope.priceFlag=false;
+	$scope.f=false
+	$scope.changeActive=function(num){
+	switch(num){
+		case 'goodsPrice':
+		$scope.activeFlag=1;
+		break;
+		case "saleCount":
+		$scope.activeFlag=2;
+		break;
+		case "commentCount":
+		$scope.activeFlag=3;
+		break;
+		default:break;
+	}
+	if(num=="goodsPrice"){
+		$scope.priceFlag=$scope.reverseFlag?true:false
+		$scope.priceFlag1=!$scope.reverseFlag?true:false
+		$scope.reverseFlag=$scope.reverseFlag?false:true
+		$scope.f=true
+	}else{
+		$scope.reverseFlag=true
+		$scope.priceFlag=false
+		$scope.priceFlag1=false
+	}
+	$scope.selectColumn=num
+		
+	}	
+	$scope.search=function(flw){
+		$http({
+			url:"http://wdinghua.applinzi.com/json/q-list.json",
+			methed:"get",
+			params:{
+				keyword:flw
+			}
+		}).success(function(res){
+			for(var key in res){
+				if(res[key].keyword==flw){
+					$scope.dataList=res[key].dataList
+					$scope.mai=true
+					return false
+				}else{
+					$scope.mai=!1;
+				}
+			}
+		})
+	}
+	$scope.goHome=function(){
+		$state.go("footer.home.article1")
+	}
+	$scope.goDetail=function(val){
+		$state.go("goodsDetails.tuwendetail",{
+			id:val
+		})
+	}
+	$(window).on("scroll",function(){
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop
+		if(scrollTop>=800){
+			$("#icont").stop().animate({"top":"70%"})
+		}else{
+			$("#icont").stop().animate({"top":"120%"})
+		}
+	})
+	$scope.toTop=function(){
+		document.body.scrollTop=0
+		document.documentElement.scrollTop=0
+	}
+})

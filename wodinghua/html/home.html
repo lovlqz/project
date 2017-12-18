@@ -1,0 +1,101 @@
+<link rel="stylesheet" type="text/css" href="css/home.css"/>
+
+	<header>
+		<span class="iconfont">&#xe61e;</span>
+		<div><img src="img/d_logo.png" /></div>
+		<b class="iconfont">&#xe696;</b>
+	</header>
+	<div id="homemain">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" ng-repeat="data in dataList" ng-click="getId(data.appLink)"><img ng-src="{{apiUrl+data.imageUrl}}"/></div>
+		    
+		  </div>
+		  <div class="swiper-pagination dotted"></div>
+		</div>
+		
+		<div class="nav">
+			<dl ui-sref="collect">
+				<dt><img src="img/d_nav1.png"/></dt>
+				<dd>收藏</dd>
+			</dl>
+			<dl ui-sref="order">
+				<dt><img src="img/d_nav2.png"/></dt>
+				<dd>物流</dd>
+			</dl>
+			<dl ui-sref="footer.list">
+				<dt><img src="img/d_nav3.png"/></dt>
+				<dd>分类</dd>
+			</dl>
+			<dl>
+				<dt><img src="img/d_nav4.png"/></dt>
+				<dd>红包</dd>
+			</dl>
+		</div>
+		<div class="label">
+			<img src="img/d_limit.png" />
+		</div>
+		
+		<div class="flower">
+			<ul>
+				<li ng-repeat="flower in flowerList" ng-click="getId(flower.appLink)">
+					<h3 ng-bind="flower.title"></h3>
+					<span ng-bind="flower.subtitle"></span>
+					<img ng-src="{{apiUrl+flower.imageUrl}}" alt="" />
+				</li>
+				
+			</ul>
+		</div>
+		
+		<div class="content">
+			<div><img ng-src="{{apiUrl+banner[0].imageUrl}}"/></div>
+			<ul>
+				<li>
+					<div>
+						<h3 ng-bind="arr[0]"></h3>
+						<span>生日祝福、纪念礼物</span>
+						<input type="button" value="立即进入" ng-click="intoSearch(arr[0])"/>
+					</div>
+					<div><img src="img/d_flo1.png"/></div>
+				</li>
+				<li>
+					<div>
+						<h3 ng-bind="arr[1]"></h3>
+						<span>一份祝福、一份惊喜</span>
+						<input type="button" value="限量抢购"  ng-click="intoSearch(arr[1])"/>
+					</div>
+					<div><img src="img/d_flo2.png"/></div>
+				</li>
+				<li>
+					<div>
+						<h3 ng-bind="arr[2]"></h3>
+						<span>鲜花永生、祝福永恒</span>
+						<input type="button" value="马上去抢"  ng-click="intoSearch(arr[2])"/>
+					</div>
+					<div><img src="img/d_flo3.png"/></div>
+				</li>
+				<li>
+					<div>
+						<h3 ng-bind="arr[3]"></h3>
+						<span>开业花篮、庆典用花</span>
+						<input type="button" value="立即进入" ng-click="intoSearch(arr[3])" />
+					</div>
+					<div><img src="img/d_flo4.png"/></div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="article">
+			<ul class="art">
+				<li ui-sref="footer.home.article1" class="articleActive">本周精选</li>
+				<li ui-sref="footer.home.article2">感情思绪</li>
+				<li ui-sref="footer.home.article3">脱单套路</li>
+				<li ui-sref="footer.home.article4">送花故事</li>
+			</ul>
+			<div ui-view="article1"></div>
+			<div ui-view="article2"></div>
+			<div ui-view="article3"></div>
+			<div ui-view="article4"></div>
+		</div>		
+		<div class="more">点击浏览更多</div>
+	</div>

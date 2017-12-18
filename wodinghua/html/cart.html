@@ -1,0 +1,67 @@
+	<body>
+		<header class="l_header">
+			<div class="l_header_left" ui-sref="footer.list">
+				<i class="iconfont">&#xe606;</i>
+			</div>
+			<div class="l_header_mid title" ng-bind="title"></div>
+			<div class="l_header_right" ng-if="l_showBack" ng-click="remove()">
+				<i class="iconfont">&#xe63c;</i>
+			</div>
+		</header>
+		<section class="l_section">
+			<div class="l_emptyCar" ng-if="l_emptycart">
+				<div class="l_emptyLogo"><i class="iconfont">&#xe6c2;</i></div>
+				<p class="l_emptySay">
+					您的购物车内还没有商品！
+				</p>
+				<div class="l_emptyBtn">
+					<div class="l_personalCenter" ui-sref="footer.mine">个人中心</div>
+					<div class="l_buyNow" ui-sref="footer.list">立即抢购</div>
+				</div>
+			</div>
+			<div class="l_fullCar" ng-if="l_fullcart">
+				<ul class="l_carBox">
+					<li class="l_carList" ng-repeat="goods in goodsArr" item-id={{goods.goodsId}}>
+						<div class="l_carListLeft">
+							<i class="iconfont">&#xe7c4;</i>
+						</div>
+						<div class="l_carListMid">
+							<div class="l_imgBox">
+								<img ng-src={{goods.goodsLogo}} />
+							</div>
+							<div class="l_desBox">
+								<div class="l_des_title">
+									{{goods.goodsName}}
+								</div>
+								<div class="l_des_price">
+									{{goods.goodsPrice}}
+								</div>
+								<div class="l_des_tol">
+									数量：
+									<span class="l_reduce" ng-click="reduce($index)">-</span>
+									<input class="l_goodsNum" ng-model="goods.goodsNum" type="text" ng-change="change($index)" disabled="disabled" />
+									<span class="l_add" ng-click="add($index)">+</span>
+								</div>
+							</div>
+						</div>
+						<div class="l_carListRight" ng-click="getId($index)">
+							<i class="iconfont">&#xe613;</i>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<div class="l_footerBox" ng-if="l_totalBox">
+			<div class="l_selectAll">
+				<i class="iconfont">&#xe7c4;</i>
+				<span>全选</span>
+			</div>
+			<div class="l_footerBot">
+				<div class="l_total">总计：<span ng-bind="allSum()"></span></div>
+				<div class="l_totalNum">(共<span ng-bind="allNum()"></span>件)</div>
+			</div>
+			<div class="l_footerMoney">
+				<span>结算</span>
+			</div>
+		</div>
+	</body>

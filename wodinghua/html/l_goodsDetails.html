@@ -1,0 +1,62 @@
+	    <div class="ll_wrap"  ng-class="l_goIn?'l_moveIn':' '">
+			<header class="ll_header">
+			<div class="l_header_left" ui-sref="footer.list">
+				<i class="iconfont">&#xe606;</i>
+			</div>
+			<div class="l_header_mid">
+				{{goodsName}}
+			</div>
+			<div class="l_header_right" ui-sref="footer.mine">
+				<i class="iconfont">&#xe696;</i>
+			</div>
+		</header>
+		<section class="ll_section">
+			<div class="l_goodsImgBox">
+				<img ng-src={{goodsLogo}} />
+			</div>
+			<div class="l_descBox">
+				<h4 class="l_desc">
+					{{goodsName}}
+				</h4>
+				<p class="l_leibie">
+					<span>{{goodsSub}}</span>
+				</p>
+				<div class="l_priceBox">
+					<span class="l_newprice">￥{{goodsPrice}}</span>
+					<span class="l_oldprice"><del>{{marketPrice}}</del></span>
+					<span class="l_sellBox">已售：<span class="l_sell">{{saleCount}}</span>件</span>
+				</div>
+			</div>
+			<div class="l_usersayAgoodsBox">
+				<div class="l_picBox l_active" ui-sref="goodsDetails.tuwendetail({id:goodsId})" ui-sref-active="l_active">图文详情</div>
+				<div class="l_userSayBox" ui-sref="goodsDetails.pinglun({id:goodsId})" ui-sref-active="l_active">客户评价<span class="l_userSayNum">({{commentCount}})</span></div>
+			</div>
+				<!--图文详情 和评论的模板-->
+				<ui-view></ui-view>
+			<!--<div ui-view="goodsDetails.tuwendetail"></div>
+			<div ui-view="goodsDetails.pinglun"></div>-->
+		</section>
+		<footer class="ll_footerBox">
+			<div class="l_footer_left">
+				<i class="iconfont">&#xe614;</i>
+				<span>收藏</span>
+			</div>
+			<div class="l_footer_mid">
+				<div class="l_addShopcar l_bot" ng-click="l_addCart()">加入购物车</div>
+				<div class="l_buyNow l_bot" ui-sref="footer.cart">立即购买</div>
+			</div>
+			<div class="l_footer_right">
+				<i class="iconfont">&#xe790;</i>
+				<span ui-sref="footer.cart">购物车</span>
+				<span class="l_cartNum">{{goodsCount}}</span>
+			</div>
+		</footer>
+		<div class="ll_aside" ui-sref="footer.home.article1">
+			<i class="iconfont">&#xe601;</i>
+		</div>
+		<div class="ll_aside2" ng-click="l_goTop()" ng-show="showH">
+			<i class="iconfont">&#xe683;</i>
+		</div>
+	</div>
+
+

@@ -1,0 +1,25 @@
+<ui-view></ui-view>
+<footer ng-if="showFooter">
+	<ul>
+		<li ui-sref="footer.home.article1" ng-class="currentIndex==0?'active':''">
+			<em class="iconfont">&#xe601;</em>
+			<span>首页</span>
+		</li>
+		<li ui-sref="footer.list" ng-class="currentIndex==1?'active':''">
+			<em class="iconfont f">&#xe61e;</em>
+			<span>所有产品</span>			
+		</li>
+		<li>
+			<em class="iconfont plus">&#xe6dd;</em>
+		</li>
+		<li ui-sref="footer.cart" ng-class="currentIndex==2?'active':''">
+			<em class="iconfont">&#xe790;</em>
+			<span>购物车</span>			
+		</li>
+		<li ui-sref="footer.mine" ng-class="currentIndex==3?'active':''">
+			<em class="iconfont">&#xe609;</em>
+			<span>个人中心</span>
+		</li>
+	</ul>
+</footer>
+

@@ -1,0 +1,130 @@
+{
+    "dataList": {
+        "ad13": [
+            {
+                "imageUrl": "/uploads/ad/logo/5861cc1717189.jpg",
+                "appLink": "Detail_index.html?goodsId=1043",
+                "sort": "1",
+                "title": "春舞枝 19朵玫瑰花礼盒装",
+                "subtitle": "同城配送 专人送达"
+            },
+            {
+                "imageUrl": "/uploads/ad/logo/57a030cac0b38.jpg",
+                "appLink": "Detail_index.html?goodsId=1097",
+                "sort": "2",
+                "title": "",
+                "subtitle": ""
+            },
+            {
+                "imageUrl": "/uploads/ad/logo/57a030be94980.jpg",
+                "appLink": "Detail_index.html?goodsId=1092",
+                "sort": "3",
+                "title": null,
+                "subtitle": null
+            }
+        ],
+        "ad14": [
+            {
+                "imageUrl": "/uploads/ad/logo/57adada01071f.jpg",
+                "appLink": "Detail_index.html?goodsId=1020",
+                "sort": "1",
+                "title": "心心相印",
+                "subtitle": "6枝粉玫瑰"
+            },
+            {
+                "imageUrl": "/uploads/ad/logo/57adad326bc26.jpg",
+                "appLink": "Detail_index.html?goodsId=1165",
+                "sort": "2",
+                "title": "深情不渝的爱",
+                "subtitle": "11枝洋桔梗"
+            },
+            {
+                "imageUrl": "/uploads/ad/logo/57adad105ee28.jpg",
+                "appLink": "Detail_index.html?goodsId=1047",
+                "sort": "3",
+                "title": "守护爱情",
+                "subtitle": "11枝紫玫瑰"
+            }
+        ],
+        "ad15": [
+            {
+                "imageUrl": "/uploads/ad/logo/57aa8f3325aa1.jpg",
+                "appLink": "#",
+                "sort": "1",
+                "title": "",
+                "subtitle": ""
+            }
+        ],
+        "article": [
+            {
+                "articleId": "214",
+                "articleTitle": "平胸怎么了？因为我喜欢你 ，所以你是全世界最好的人",
+                "articleClassId": "59",
+                "articleLogo": "/uploads/article/logo/57aae56e09c4f.png"
+            },
+            {
+                "articleId": "212",
+                "articleTitle": "没有不爱花的女人，只有不懂浪漫的男人",
+                "articleClassId": "60",
+                "articleLogo": "/uploads/article/logo/57aac4ef78654.jpg"
+            },
+            {
+                "articleId": "211",
+                "articleTitle": "想制作自然花艺，你需要掌握这7大要素",
+                "articleClassId": "58",
+                "articleLogo": "/uploads/article/logo/57aaa5cd93564.png"
+            },
+            {
+                "articleId": "210",
+                "articleTitle": "婚礼花艺，这样才精致",
+                "articleClassId": "58",
+                "articleLogo": "/uploads/article/logo/57aa98e73fe3f.png"
+            },
+            {
+                "articleId": "209",
+                "articleTitle": "花式秀恩爱",
+                "articleClassId": "59",
+                "articleLogo": "/uploads/article/logo/57aa911fd1cd7.png"
+            },
+            {
+                "articleId": "208",
+                "articleTitle": "藏在棒棒糖里的花朵，甜蜜芳香两不误",
+                "articleClassId": "61",
+                "articleLogo": "/uploads/article/logo/57aa88ac5dee6.jpg"
+            },
+            {
+                "articleId": "207",
+                "articleTitle": "插花技巧|想制作自然花艺，你需要掌握这7大要素 ",
+                "articleClassId": "58",
+                "articleLogo": "/uploads/article/logo/57aa8a040b333.jpg"
+            },
+            {
+                "articleId": "206",
+                "articleTitle": "她曾是所有男人的性感女神，如今隐居山间只为嫁给爱情",
+                "articleClassId": "58",
+                "articleLogo": "/uploads/article/logo/57a4417652504.jpg"
+            },
+            {
+                "articleId": "205",
+                "articleTitle": "惊呆了！下一秒变女神！",
+                "articleClassId": "61",
+                "articleLogo": "/uploads/article/logo/57a43eee74e25.jpg"
+            },
+            {
+                "articleId": "204",
+                "articleTitle": "恋爱中怎么相处？看后震惊！",
+                "articleClassId": "60",
+                "articleLogo": "/uploads/article/logo/57a43eb69bbf1.jpg"
+            },
+            {
+                "articleId": "203",
+                "articleTitle": "柏拉图式的爱情观能经受住现实考验吗？",
+                "articleClassId": "59",
+                "articleLogo": "/uploads/article/logo/57a43e7555a6c.jpg"
+            }
+        ]
+    },
+    "apiUrl": "http://app.wodinghua.com",
+    "status": 200,
+    "msg": "请求成功！"
+}
